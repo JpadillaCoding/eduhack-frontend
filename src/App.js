@@ -1,19 +1,28 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
+import Chatbot from "react-chatbot-kit";
+import 'react-chatbot-kit/build/main.css'
+import config from "./chatbox/config";
+import MessageParser from "./chatbox/MessageParser";
+import ActionProvider from "./chatbox/ActionProvidere";
 
 function App() {
   return (
     <div className="main">
       <header className="main-header"></header>
       <main className="main-body">
-        <div className="container">
+        <div class="p-5">
           <div class="row">
-            <div class="col-sm">
-              <h1>input</h1>
+            <div class="form-outline, col-lg">
+              <textarea class="form-control" rows="30"></textarea>
             </div>
-            <div class="col-sm">
-              <h1>output</h1>
+            <div class="col-lg">
+              <Chatbot
+                config={config}
+                messageParser={MessageParser}
+                actionProvider={ActionProvider}
+              />
             </div>
           </div>
         </div>
