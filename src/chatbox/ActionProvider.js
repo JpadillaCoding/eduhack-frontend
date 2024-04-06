@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { MyContext } from "./MyContext";
 
-export const HandleAiResponse = (userInput) => {
-  console.log("i am in in user input" + userInput);
-  // handle when a openAI message is recieved
-};
-export const ActionProvider = ({ createChatBotMessage, setState, children }) => {
+export const ActionProvider = ({
+  createChatBotMessage,
+  setState,
+  children,
+}) => {
+  const { aiResponse } = useContext(MyContext);
+
   const handleHello = () => {
     const botMessage = createChatBotMessage("Hello. Nice to meet you.");
-
     setState((prev) => ({
       ...prev,
       messages: [...prev.messages, botMessage],
     }));
   };
+
+  useEffect(() => {
+    console.log(aiResponse);
+  }, [aiResponse]);
   return (
     <div>
       {React.Children.map(children, (child) => {
         return React.cloneElement(child, {
-          actions: { handleHello, HandleAiResponse },
+          actions: { handleHello },
         });
       })}
     </div>
