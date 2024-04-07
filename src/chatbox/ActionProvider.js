@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { MyContext } from "./MyContext";
 
 export const ActionProvider = ({
@@ -16,9 +16,6 @@ export const ActionProvider = ({
     }));
   };
 
-  useEffect(() => {
-    console.log(aiResponse);
-  }, [aiResponse]);
   return (
     <div>
       {React.Children.map(children, (child) => {

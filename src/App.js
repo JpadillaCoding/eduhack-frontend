@@ -26,34 +26,11 @@ function App() {
     <div className="main">
       <header className="main-header"></header>
       <main className="main-body">
-        <MyContext.Provider value={{ aiResponse }}>
-          <div class="p-5">
-            <div class="row">
-              <div class="form-outline, col-lg">
-                <textarea
-                  class="form-control"
-                  rows="30"
-                  value={userInput}
-                  onChange={handleInputChange}
-                ></textarea>
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  onClick={handleInputSubmit}
-                >
-                  Submit to AI
-                </button>
-              </div>
-              <div class="col-lg">
-                <Chatbot
-                  config={config}
-                  messageParser={MessageParser}
-                  actionProvider={ActionProvider}
-                />
-              </div>
-            </div>
-          </div>
-        </MyContext.Provider>
+        <Chatbot
+          config={config}
+          messageParser={MessageParser}
+          actionProvider={ActionProvider}
+        />
       </main>
     </div>
   );
